@@ -2,12 +2,12 @@
 Test for Backend
 
 Endpoints 
-  -Add ({URI}/server/insert)
-    method: POST
-    Body: - userName
-          - identityNumber
-          - emailAddress
-          - accountNumber
+  - Add ({URI}/server/insert)
+    - method: POST
+    - Body: - userName
+            - identityNumber
+            - emailAddress
+            - accountNumber
   
   - Read
     method : GET
