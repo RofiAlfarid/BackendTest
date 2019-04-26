@@ -11,7 +11,7 @@ router.get('/test', account_controller.test);
 router.post('/insert', account_controller.account_insert);
 router.get('/:name/byname', account_controller.get_acc_byname);
 router.get('/:identity/byidentity', account_controller.get_acc_byidentity);
-router.put('/:id/update', account_controller.acc_update);
-router.get('/:id/delete', account_controller.acc_delete);
+router.put('/:name/update', account_controller.acc_update);
+router.get('/:name/delete', account_controller.acc_delete);
 
 module.exports = router;

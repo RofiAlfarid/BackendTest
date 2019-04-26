@@ -1,7 +1,7 @@
 const Account = require('../models/server.model');
 var redisClient = require('redis').createClient;
-// var redis = redisClient(6379, 'localhost');
-var redis = redisClient(15319, 'redis://h:p130c16e860a5da823ba72581cfb42d738580694e981da70a13149b357738cdf1@ec2-3-210-240-94.compute-1.amazonaws.com');
+var redis = redisClient(6379, 'localhost');
+// var redis = redisClient(15319, 'redis://h:p130c16e860a5da823ba72581cfb42d738580694e981da70a13149b357738cdf1@ec2-3-210-240-94.compute-1.amazonaws.com');
 
 
 //Simple version, without validation or sanitation
@@ -61,8 +61,15 @@ exports.get_acc_byidentity = function (req, res) {
 };
 
 exports.acc_update = function (req, res) {
-    Account.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, account) {
+    Account.findOne({'userName':req.params.name}, function (err, account) {
         if (err) return next(err);
+
+        account.userName = req.body.userName;
+        account.accountNumber = req.body.accountNumber;
+        account.emailAddress = req.body.emailAddress;
+        account.identityNumber = req.body.identityNumber;
+        account.save();
+
         redis.set(req.body.userName, JSON.stringify(account), function (err) {
                 if (err) console.log(err);
                 res.send('Account udpated.');
@@ -71,7 +78,7 @@ exports.acc_update = function (req, res) {
 };
 
 exports.acc_delete = function (req, res) {
-    Account.findByIdAndRemove(req.params.id, function (err) {
+    Account.deleteOne({'userName':req.params.name}, function (err) {
         if (err) return next(err);
         redis.del(req.params.userName, function(error, response){
         	if (error) console.log('Error delete redis');
