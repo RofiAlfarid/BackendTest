@@ -1,6 +1,7 @@
 const Account = require('../models/server.model');
 var redisClient = require('redis').createClient;
-var redis = redisClient(6379, 'localhost');
+// var redis = redisClient(6379, 'localhost');
+var redis = redisClient(15319, 'redis://h:p130c16e860a5da823ba72581cfb42d738580694e981da70a13149b357738cdf1@ec2-3-210-240-94.compute-1.amazonaws.com');
 
 
 //Simple version, without validation or sanitation
@@ -53,7 +54,7 @@ exports.get_acc_byname = function (req, res) {
 
 
 exports.get_acc_byidentity = function (req, res) {
-    Account.findById({ 'identityNumber': Number(req.params.identity) }, function (err, account) {
+    Account.find({ 'identityNumber': Number(req.params.identity) }, function (err, account) {
         if (err) console.log(err);
         res.send(account);
     })
