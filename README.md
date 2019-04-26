@@ -10,19 +10,19 @@ Endpoints
             - accountNumber
   
   - Read
-    method : GET
-    by Identity ({URI}/server/{userName}/byidentity)
-    by userName ({URI}/server/{userName}/byname)
+    - method : GET
+    - by Identity ({URI}/server/{userName}/byidentity)
+    - by userName ({URI}/server/{userName}/byname)
     
   - Update ({URI}/server/{userName}/update)
-    method : PUT
-    Body: - userName
-          - identityNumber
-          - emailAddress
-          - accountNumber
+    - method : PUT
+    - Body: - userName
+            - identityNumber
+            - emailAddress
+            - accountNumber
           
   - Delete ({URI}/server/{userName}/delete)
-    method : GET
+    - method : GET
     
     
     
