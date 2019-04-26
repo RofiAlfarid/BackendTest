@@ -4,10 +4,11 @@ Test for Backend
 Endpoints 
   - Add ({URI}/server/insert)
     - method: POST
-    - Body: - userName
-            - identityNumber
-            - emailAddress
-            - accountNumber
+    - Body: 
+      - userName
+      - identityNumber
+      - emailAddress
+      - accountNumber
   
   - Read
     - method : GET
@@ -16,10 +17,11 @@ Endpoints
     
   - Update ({URI}/server/{userName}/update)
     - method : PUT
-    - Body: - userName
-            - identityNumber
-            - emailAddress
-            - accountNumber
+    - Body: 
+      - userName
+      - identityNumber
+      - emailAddress
+      - accountNumber
           
   - Delete ({URI}/server/{userName}/delete)
     - method : GET
